@@ -1,0 +1,55 @@
+package pages
+
+const UpdatePage = `
+<html>
+<head>
+    <title>Phone Number and Provider Form</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Update Phone Number and Provider</h1>
+    <form id="phone-form" onsubmit="return false">
+        <label for="phone-number">Phone Number:</label>
+        <input type="text" id="phone-number" name="number"><br><br>
+        <label for="provider_id">Provider:</label>
+        <select id="provider_id" name="provider_id"></select><br><br>
+        <button id="save-button">Save</button>
+		<button><a href="http://localhost:9090/dashboard">Dashboard</a></button>
+    </form>
+
+    <script>
+		const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get('id');
+        console.log("id nya apa", id)
+		fetch('http://localhost:9090/provider')
+            .then(response => response.json())
+            .then(data => {
+                const providers = data.data;
+
+                providers.forEach(provider => {
+                    const option = document.createElement('option');
+                    option.value = provider.ID;  
+                    option.text = provider.Provider;
+                    document.getElementById('provider_id').appendChild(option);
+                });
+            })
+            .catch(error => console.error('Error fetching providers:', error));
+
+        $('#save-button').click(() => {
+            const formData = $('#phone-form').serialize();
+            $.post('http://localhost:9090/phonenumber/'+id, formData)
+                .then(response => {
+                    // Handle successful save
+                    console.log('Data saved successfully!');
+                    window.location.replace("http://localhost:9090/dashboard")
+                })
+                .catch(error => {
+                    // Handle save errors
+                    console.error('Error saving data:', error);
+                });
+            });
+
+    </script>
+</body>
+</html>
+`

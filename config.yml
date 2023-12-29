@@ -1,0 +1,7 @@
+port: 9090
+
+oauthStateString: "randomstr"
+key: "924245B06ACB3F050C9E8E001FC9CDF950EEA2ADE5F6DCFEE23CD90C5127A9DF"
+google:
+  clientID: "431988570477-u108j5g6dqukt8mpj0i613hq6qb3ubbc.apps.googleusercontent.com"
+  clientSecret: "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"

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Real-Time Data Updates</title>
+</head>
+<body>
+    <h1>Received Data:</h1>
+    <pre id="data-container"></pre>
+
+    <script>
+        const ws = new WebSocket("ws://localhost:9090/ws"); // Replace with your server address
+
+        ws.onmessage = (event) => {
+            const data = JSON.parse(event.data);
+            const dataContainer = document.getElementById("data-container");
+            dataContainer.textContent += `Message: ${data.message}, Value: ${data.value}\n`;
+        };
+    </script>
+</body>
+</html>
