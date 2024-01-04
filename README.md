@@ -6,9 +6,11 @@ To start using, first initialize the database with name "phonenumber" in postgre
 INSERT INTO providers
 (id, provider)
 VALUES('07c3ea86-38b1-47b7-b8cc-f93b65011e33', 'indosat');
+
 INSERT INTO providers
 (id, provider)
 VALUES('d19035db-d804-41db-ae6b-89d5a2b4b1ef', 'tri');
+
 INSERT INTO providers
 (id, provider)
 VALUES('2fddb3ea-b9a2-4427-b3d9-0cadf7e2ff57', 'telkomsel');
